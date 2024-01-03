@@ -1,6 +1,5 @@
-# chat-react
-<!--
-**[SEE DEMO HERE](https://chat-app-git-main-elen-oz.vercel.app/)**
+# chat-app
 
-***[OR HERE](https://chat-app-kappa-three.vercel.app/)***
--->
+**[see demo here](https://chat-app-git-main-elen-oz.vercel.app/)**
+
+_[or here](https://chat-app-kappa-three.vercel.app/)_
