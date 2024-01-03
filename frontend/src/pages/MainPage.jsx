@@ -2,6 +2,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Footer from '../components/Footer';
 import { Box } from '@chakra-ui/react';
+import Header from '../components/Header';
 
 const MainPage = () => {
   const location = useLocation();
@@ -12,16 +13,7 @@ const MainPage = () => {
 
   return (
     <Box h='90vh'>
-      <nav>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/login'>Login</Link>
-          </li>
-        </ul>
-      </nav>
+      <Header />
       <hr />
       <Outlet />
       <hr />
