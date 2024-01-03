@@ -1,5 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import Footer from '../components/Footer';
+import { Box } from '@chakra-ui/react';
 
 const MainPage = () => {
   const location = useLocation();
@@ -9,7 +11,7 @@ const MainPage = () => {
   }, [location]);
 
   return (
-    <>
+    <Box h='90vh'>
       <nav>
         <ul>
           <li>
@@ -23,8 +25,8 @@ const MainPage = () => {
       <hr />
       <Outlet />
       <hr />
-      <div>Гипотетический ФУТЕР</div>
-    </>
+      <Footer />
+    </Box>
   );
 };
 export default MainPage;

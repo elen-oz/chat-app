@@ -26,10 +26,8 @@ const LoginPage = () => {
       onSubmit,
     });
 
-  console.log(errors);
-
   return (
-    <Flex bg='gray.100' align='center' justify='center' h='100vh'>
+    <Flex bg='gray.100' align='center' justify='center' h='100%'>
       <Box bg='white' p={6} rounded='4px' w={64}>
         <form onSubmit={handleSubmit}>
           <VStack spacing={4} align='flex-start'>
