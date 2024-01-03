@@ -3,18 +3,17 @@ import { Box, HStack, List, ListItem } from '@chakra-ui/react';
 
 const Header = () => {
   return (
-    <Box as='header'>
+    <Box as='header' py='0.7rem'>
       <List
         display='flex'
         dir='row'
         justifyContent='center'
         alignItems='center'
-        spacing={5}
       >
-        <ListItem>
+        <ListItem px={2}>
           <Link to='/'>Home</Link>
         </ListItem>
-        <ListItem>
+        <ListItem px={2}>
           <Link to='/login'>Login</Link>
         </ListItem>
       </List>
