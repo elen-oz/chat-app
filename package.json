@@ -1,5 +1,5 @@
 {
-  "name": "chat-react",
+  "name": "chat-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,10 @@
   },
   "author": "elen-oz",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elen-oz/chat-app.git"
+  },
   "dependencies": {
     "@hexlet/chat-server": "^1.1.8"
   }
