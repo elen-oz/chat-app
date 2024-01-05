@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
   Flex,
   Box,
@@ -10,12 +11,27 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { loginSchema } from '../schemas';
+import axios from 'axios';
 
-const onSubmit = (values) => {
-  console.log('Submitted values:', values);
-};
+// const onSubmit = (values) => {
+//   console.log('Submitted values:', values);
+// };
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const onSubmit = async (values) => {
+    try {
+      const response = await axios.post('/api/login', values);
+      const { token } = response.data;
+
+      localStorage.setItem('token', token);
+      navigate('/');
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  };
+
   const { values, handleSubmit, errors, touched, handleChange, handleBlur } =
     useFormik({
       initialValues: {
@@ -36,7 +52,7 @@ const LoginPage = () => {
               <Input
                 id='email'
                 name='email'
-                type='email'
+                // type='email'
                 variant='filled'
                 value={values.email}
                 onChange={handleChange}
