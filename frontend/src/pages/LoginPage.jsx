@@ -13,17 +13,18 @@ import { useFormik } from 'formik';
 import { loginSchema } from '../schemas';
 import axios from 'axios';
 
-// const onSubmit = (values) => {
-//   console.log('Submitted values:', values);
-// };
-
 const LoginPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
+    console.log('Submitted values:', values);
+
     try {
-      const response = await axios.post('/api/login', values);
+      const response = await axios.post('/api/v1/login', values);
+
       const { token } = response.data;
+
+      console.log('token:', token);
 
       localStorage.setItem('token', token);
       navigate('/');
@@ -35,7 +36,7 @@ const LoginPage = () => {
   const { values, handleSubmit, errors, touched, handleChange, handleBlur } =
     useFormik({
       initialValues: {
-        email: '',
+        username: '',
         password: '',
       },
       validationSchema: loginSchema,
@@ -47,18 +48,18 @@ const LoginPage = () => {
       <Box bg='white' p={6} rounded='4px' w={64}>
         <form onSubmit={handleSubmit}>
           <VStack spacing={4} align='flex-start'>
-            <FormControl isInvalid={!!errors.email && touched.email}>
-              <FormLabel htmlFor='email'>Email Address</FormLabel>
+            <FormControl isInvalid={!!errors.username && touched.username}>
+              <FormLabel htmlFor='username'>User name</FormLabel>
               <Input
-                id='email'
-                name='email'
+                id='username'
+                name='username'
                 // type='email'
                 variant='filled'
-                value={values.email}
+                value={values.username}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <FormErrorMessage>{errors.email}</FormErrorMessage>
+              <FormErrorMessage>{errors.username}</FormErrorMessage>
             </FormControl>
             <FormControl isInvalid={!!errors.password && touched.password}>
               <FormLabel htmlFor='password'>Password</FormLabel>
