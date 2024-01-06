@@ -5,7 +5,7 @@ start:
 	npm start
 
 build:
-	npm build
+	vite build
 
 lint:
 	npx eslint .
