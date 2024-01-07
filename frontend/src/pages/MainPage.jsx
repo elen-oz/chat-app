@@ -1,15 +1,23 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import Footer from '../components/Footer';
 import { Box } from '@chakra-ui/react';
+import { useAuth } from '../context/AuthContext';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
+  const { token } = useAuth();
 
   useEffect(() => {
     console.log('Current location is ', location);
-  }, [location]);
+    console.log('Current token is ', token);
+
+    if (!token && location.pathname !== '/login') {
+      navigate('/login');
+    }
+  }, [location, navigate, token]);
 
   return (
     <Box h='90vh'>
