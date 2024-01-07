@@ -19,8 +19,12 @@ const LoginPage = () => {
   const onSubmit = async (values) => {
     console.log('Submitted values:', values);
 
+    const axiosInstance = axios.create({
+      baseURL: 'http://localhost:5001',
+    });
+
     try {
-      const response = await axios.post('/api/v1/login', values);
+      const response = await axiosInstance.post('/api/v1/login', values);
 
       const { token } = response.data;
 
@@ -53,7 +57,6 @@ const LoginPage = () => {
               <Input
                 id='username'
                 name='username'
-                // type='email'
                 variant='filled'
                 value={values.username}
                 onChange={handleChange}
