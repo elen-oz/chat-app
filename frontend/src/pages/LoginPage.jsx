@@ -46,7 +46,7 @@ const LoginPage = () => {
       navigate('/private');
     } catch (error) {
       console.error('Login failed:', error);
-      formik.setSubmitting(false);
+      setSubmitting(false);
       if (error.isAxiosError && error.response.status === 401) {
         setAuthFailed(true);
         inputRef.current.select();
@@ -57,15 +57,22 @@ const LoginPage = () => {
     }
   };
 
-  const { values, handleSubmit, errors, handleChange, handleBlur, touched } =
-    useFormik({
-      initialValues: {
-        username: '',
-        password: '',
-      },
-      validationSchema: loginSchema,
-      onSubmit,
-    });
+  const {
+    values,
+    handleSubmit,
+    errors,
+    handleChange,
+    handleBlur,
+    touched,
+    setSubmitting,
+  } = useFormik({
+    initialValues: {
+      username: '',
+      password: '',
+    },
+    validationSchema: loginSchema,
+    onSubmit,
+  });
 
   return (
     <Flex bg='gray.100' align='center' justify='center' h='100%'>

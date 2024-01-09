@@ -7,6 +7,7 @@ const getAuthHeader = () => {
   const userId = JSON.parse(localStorage.getItem('userId'));
 
   if (userId && userId.token) {
+    console.log(`Authorized`);
     return { Authorization: `Bearer ${userId.token}` };
   }
 

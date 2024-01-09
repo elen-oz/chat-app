@@ -1,5 +1,19 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Box, HStack, List, ListItem } from '@chakra-ui/react';
+import { Box, HStack, List, ListItem, Button } from '@chakra-ui/react';
+import useAuth from '../hooks/index';
+
+const AuthButton = () => {
+  const auth = useAuth();
+  const location = useLocation();
+
+  return auth.loggedIn ? (
+    <Button onClick={auth.logOut}>Log out</Button>
+  ) : (
+    <Button as={Link} to='/login' state={{ from: location }}>
+      Log in
+    </Button>
+  );
+};
 
 const Header = () => {
   return (
@@ -11,11 +25,13 @@ const Header = () => {
         alignItems='center'
       >
         <ListItem px={2}>
-          <Link to='/'>Home</Link>
+          <Link to='/'>Public</Link>
         </ListItem>
         <ListItem px={2}>
-          <Link to='/login'>Login</Link>
+          <Link to='/private'>Private</Link>
         </ListItem>
+
+        <AuthButton />
       </List>
     </Box>
   );
