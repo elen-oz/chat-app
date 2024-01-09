@@ -26,6 +26,8 @@ const LoginPage = () => {
     inputRef.current.focus();
   }, []);
 
+  // console.log('location', location);
+
   const onSubmit = async (values) => {
     setAuthFailed(false);
 
@@ -39,8 +41,9 @@ const LoginPage = () => {
       const response = await axiosInstance.post(routes.loginPath(), values);
       localStorage.setItem('userId', JSON.stringify(response.data));
       auth.logIn();
-      const { from } = location.state;
-      navigate(from);
+      // const { from } = location.state;
+      // navigate(from);
+      navigate('/private');
     } catch (error) {
       console.error('Login failed:', error);
       formik.setSubmitting(false);
@@ -50,26 +53,27 @@ const LoginPage = () => {
         return;
       }
 
-      throw err;
+      throw error;
     }
   };
 
-  const { values, handleSubmit, errors, handleChange, handleBlur } = useFormik({
-    initialValues: {
-      username: '',
-      password: '',
-    },
-    validationSchema: loginSchema,
-    onSubmit,
-  });
+  const { values, handleSubmit, errors, handleChange, handleBlur, touched } =
+    useFormik({
+      initialValues: {
+        username: '',
+        password: '',
+      },
+      validationSchema: loginSchema,
+      onSubmit,
+    });
 
   return (
     <Flex bg='gray.100' align='center' justify='center' h='100%'>
       <Box bg='white' p={6} rounded='4px' w={64}>
         <form onSubmit={handleSubmit}>
           <VStack spacing={4} align='flex-start'>
-            <FormControl>
-              {/* <FormLabel htmlFor='username'>Username</FormLabel> */}
+            <FormControl isInvalid={!!errors.username && touched.username}>
+              <FormLabel htmlFor='username'>Username</FormLabel>
               <Input
                 value={values.username}
                 onChange={handleChange}
@@ -85,8 +89,8 @@ const LoginPage = () => {
               <FormErrorMessage>{errors.username}</FormErrorMessage>
             </FormControl>
 
-            <FormControl>
-              {/* <FormLabel htmlFor='password'>Password</FormLabel> */}
+            <FormControl isInvalid={!!errors.password && touched.password}>
+              <FormLabel htmlFor='password'>Password</FormLabel>
               <Input
                 id='password'
                 name='password'
@@ -99,6 +103,7 @@ const LoginPage = () => {
                 isInvalid={authFailed}
                 required
               />
+
               <FormErrorMessage>{errors.password}</FormErrorMessage>
 
               {/* <Form.Control.Feedback type='invalid'>
