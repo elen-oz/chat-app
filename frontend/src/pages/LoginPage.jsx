@@ -26,8 +26,6 @@ const LoginPage = () => {
     inputRef.current.focus();
   }, []);
 
-  // console.log('location', location);
-
   const onSubmit = async (values) => {
     setAuthFailed(false);
 
@@ -112,10 +110,6 @@ const LoginPage = () => {
               />
 
               <FormErrorMessage>{errors.password}</FormErrorMessage>
-
-              {/* <Form.Control.Feedback type='invalid'>
-                the username or password is incorrect
-              </Form.Control.Feedback> */}
             </FormControl>
             <Button type='submit' colorScheme='green' w='full'>
               Login
