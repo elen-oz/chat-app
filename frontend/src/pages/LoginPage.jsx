@@ -10,6 +10,7 @@ import {
   Input,
   FormErrorMessage,
   Button,
+  Text,
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { loginSchema } from '../schemas';
@@ -77,6 +78,7 @@ const LoginPage = () => {
       <Box bg='white' p={6} rounded='4px' w={64}>
         <form onSubmit={handleSubmit}>
           <VStack spacing={4} align='flex-start'>
+            {authFailed && <Text color='red'>Wrong login or password</Text>}
             <FormControl isInvalid={!!errors.username && touched.username}>
               <FormLabel htmlFor='username'>Username</FormLabel>
               <Input
