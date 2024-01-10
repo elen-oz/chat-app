@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
-import authContext from '../context/index.jsx';
+import AuthContext from '../context/index.jsx';
 
-const useAuth = () => useContext(authContext);
+const useAuth = () => useContext(AuthContext);
 
 export default useAuth;

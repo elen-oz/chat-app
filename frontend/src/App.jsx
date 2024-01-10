@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import {
   BrowserRouter,
   Routes,
   Route,
-  Link,
   Navigate,
   useLocation,
 } from 'react-router-dom';
@@ -16,24 +14,8 @@ import LoginPage from './pages/LoginPage';
 import PrivatePage from './pages/PrivatePage';
 import NotFoundPage from './pages/NotFoundPage';
 
-import AuthContext from './context/index';
+import AuthProvider from './context/AuthContext';
 import useAuth from './hooks/index';
-
-const AuthProvider = ({ children }) => {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  const logIn = () => setLoggedIn(true);
-  const logOut = () => {
-    localStorage.removeItem('userId');
-    setLoggedIn(false);
-  };
-
-  return (
-    <AuthContext.Provider value={{ loggedIn, logIn, logOut }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
 
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
