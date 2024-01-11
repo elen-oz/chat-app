@@ -5,7 +5,6 @@ import {
   Navigate,
   useLocation,
 } from 'react-router-dom';
-import { Button } from '@chakra-ui/react';
 
 // wrapper
 import MainPage from './pages/MainPage';
