@@ -40,9 +40,8 @@ const LoginPage = () => {
       const response = await axiosInstance.post(routes.loginPath(), values);
       localStorage.setItem('userId', JSON.stringify(response.data));
       auth.logIn();
-      // const { from } = location.state;
-      // navigate(from);
-      navigate('/private');
+      const { from } = location.state;
+      navigate(from);
     } catch (error) {
       console.error('Login failed:', error);
       setSubmitting(false);
