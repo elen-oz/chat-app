@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import routes from '../routes';
-import { Flex, Text, Box, Heading } from '@chakra-ui/react';
+import { Flex, Text, Box, Heading, VStack } from '@chakra-ui/react';
 
 const PrivatePage = () => {
   const [channels, setChannels] = useState([]);
@@ -43,7 +43,8 @@ const PrivatePage = () => {
 
   return (
     <Flex bg='gray.100' align='center' justify='center' h='100%'>
-      <Text>Private Page 🤫</Text>
+      {/* <VStack> */}
+      <Box>Private Page 🤫</Box>
       <Heading>Chat</Heading>
       {channels.length > 0 && (
         <Box>
@@ -61,6 +62,7 @@ const PrivatePage = () => {
           ))}
         </Box>
       )}
+      {/* </VStack> */}
     </Flex>
   );
 };
