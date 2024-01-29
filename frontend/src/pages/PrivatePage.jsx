@@ -63,7 +63,7 @@ const PrivatePage = () => {
           templateColumns='repeat(3, 1fr)'
           gap={2}
         >
-          <GridItem rowSpan={3} colSpan={1} bg='tomato'>
+          <GridItem rowSpan={4} colSpan={1} bg='tomato'>
             <Box>
               <Text>Channels:</Text>
               {channels.length > 0 && (
@@ -88,8 +88,8 @@ const PrivatePage = () => {
             </Box>
           </GridItem>
 
-          <GridItem rowSpan={3} colSpan={2} bg='papayawhip'>
-            <Box></Box>
+          <GridItem rowSpan={1} colSpan={2} bg='papayawhip'>
+            <Box>Input</Box>
           </GridItem>
         </Grid>
       </Container>
