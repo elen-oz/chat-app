@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setChannels, setMessages } from '../slices/dataSlice';
+import { setChannels, setMessages } from '../redux/dataSlice';
 import routes from '../routes';
 import {
   Heading,
@@ -55,10 +55,11 @@ const PrivatePage = () => {
 
   return (
     <>
-      <Container h='100%' maxW='container.lg'>
+      <Container maxW='container.lg'>
         <Heading w='100%'>Chat</Heading>
         <Grid
-          templateRows='repeat(3, 1fr)'
+          h='100%'
+          templateRows='repeat(4, 1fr)'
           templateColumns='repeat(3, 1fr)'
           gap={2}
         >
@@ -86,9 +87,10 @@ const PrivatePage = () => {
               )}
             </Box>
           </GridItem>
-          {/* <GridItem rowSpan={3} colSpan={1} bg='blue.500'>
-            Users?
-          </GridItem> */}
+
+          <GridItem rowSpan={3} colSpan={2} bg='papayawhip'>
+            <Box></Box>
+          </GridItem>
         </Grid>
       </Container>
     </>
