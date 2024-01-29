@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Box, HStack, List, ListItem, Button } from '@chakra-ui/react';
-import useAuth from '../hooks/index';
+import useAuth from '../hooks/useAuth';
 
 const AuthButton = () => {
   const auth = useAuth();

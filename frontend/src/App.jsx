@@ -14,7 +14,7 @@ import PrivatePage from './pages/PrivatePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 import AuthProvider from './context/AuthContext';
-import useAuth from './hooks/index';
+import useAuth from './hooks/useAuth.jsx';
 
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
