@@ -12,7 +12,7 @@ import store from './redux/store';
 import MainPage from './pages/MainPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import PrivatePage from './pages/PrivatePage';
+import ChatPage from './pages/ChatPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 import AuthProvider from './context/AuthContext';
@@ -43,7 +43,7 @@ const App = () => {
                 path='private'
                 element={
                   <PrivateRoute>
-                    <PrivatePage />
+                    <ChatPage />
                   </PrivateRoute>
                 }
               />

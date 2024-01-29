@@ -25,7 +25,7 @@ const getAuthHeader = () => {
   return {};
 };
 
-const PrivatePage = () => {
+const ChatPage = () => {
   const dispatch = useDispatch();
   const channels = useSelector((state) => state.data.channels);
   const messages = useSelector((state) => state.data.messages);
@@ -97,4 +97,4 @@ const PrivatePage = () => {
   );
 };
 
-export default PrivatePage;
+export default ChatPage;
