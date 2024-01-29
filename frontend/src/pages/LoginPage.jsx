@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { loginSchema } from '../schemas';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../hooks/index';
 import routes from '../routes.js';
 
 const LoginPage = () => {

@@ -5,7 +5,9 @@ import {
   Navigate,
   useLocation,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
+import store from './store';
 // wrapper
 import MainPage from './pages/MainPage';
 import HomePage from './pages/HomePage';
@@ -14,7 +16,7 @@ import PrivatePage from './pages/PrivatePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 import AuthProvider from './context/AuthContext';
-import useAuth from './hooks/useAuth.jsx';
+import useAuth from './hooks/index';
 
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
@@ -29,26 +31,28 @@ const PrivateRoute = ({ children }) => {
 
 const App = () => {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<MainPage />}>
-            <Route index element={<HomePage />} />
-            <Route path='login' element={<LoginPage />} />
-            <Route path='public' element={<HomePage />} />
-            <Route
-              path='private'
-              element={
-                <PrivateRoute>
-                  <PrivatePage />
-                </PrivateRoute>
-              }
-            />
-            <Route path='*' element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<MainPage />}>
+              <Route index element={<HomePage />} />
+              <Route path='login' element={<LoginPage />} />
+              <Route path='public' element={<HomePage />} />
+              <Route
+                path='private'
+                element={
+                  <PrivateRoute>
+                    <PrivatePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route path='*' element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </Provider>
   );
 };
 
